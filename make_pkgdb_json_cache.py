@@ -50,14 +50,14 @@ def get_active_branches():
 
 if __name__ == "__main__":
     pkgdb = pkgdb2client.PkgDB()
-    stati = ["Approved", "Retired", "Orphaned"]
+    states = ["Approved", "Retired", "Orphaned"]
     try:
         outdir = sys.argv[1]
     except IndexError:
         outdir = "./"
 
     for branch in get_active_branches():
-        for status in stati:
+        for status in states:
             result = pkgdb2client.PkgDB().get_packages(
                 branches=branch, status=status, page="all")
             outfilename = "{}-{}.json".format(branch, status)
