@@ -36,7 +36,10 @@ except ImportError:
     requests = None
     import pycurl
     from StringIO import StringIO
-    import simplejson as json
+    try:
+        import simplejson as json
+    except ImportError:
+        import json
 
 import yum
 
