@@ -62,6 +62,8 @@ def get_os_info():
     try:
         osrelease = open("/etc/os-release").read()
         for line in osrelease.splitlines():
+            if not "=" in line:
+                continue
             key, value = line.split("=", 1)
             value = value.strip('"')
             info[key] = value
